@@ -1,0 +1,17 @@
+-what is use of -g while installing from npm.
+-diffrent b/w caret and tilda(^and~).
+-intialize git.
+-gitignore
+-create a remote repo on github.com
+-play with route or route extensions  ex. /hello and /,/hello/3, /stoke/dkl/lke
+-order of route matter a lot.
+-install a postman app make a workspace.
+-write a logic to handle /get,/post,/patch and /delete
+-explore routing and use of ?,+,(),*.
+-use of regex in route /a/, /.*fly$/
+-read the use of query params in route
+-reading the dynamic route
+-multiple route handleres the dynamic route
+-next()
+-next fn and error along with res.send()
+-what is middleware function
