@@ -14,4 +14,9 @@
 -multiple route handleres the dynamic route
 -next()
 -next fn and error along with res.send()
--what is middleware function
+-what is middleware 
+-how express js basicallly handles requests behind the scenes.
+-diffrent b/w app.use and app.all
+-why we use middle ware ?
+-write a dummy authentication for admin
+- write a dummy authentication for user route,except /user/login

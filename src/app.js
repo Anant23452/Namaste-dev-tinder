@@ -1,4 +1,5 @@
 console.log("Dev tider is running");
+require("./config/database")
 const express= require("express");
 const app = express();
 
@@ -15,7 +16,7 @@ const app = express();
 // });
 
 // Agar ek hi route me  ek se jyada route handler ho tab kya goga :(
-
+/*
 app.use("/user",
     (req,res,next)=>{
         console.log("first route started running");
@@ -28,9 +29,11 @@ app.use("/user",
     }
      
 )
+*/
 
 // Multiper route handling 
 
+/*
 app.use("/user",
     (req,res,next)=>{
         console.log("first route started running");
@@ -55,18 +58,66 @@ app.use("/user",
         }
     ]
 );
+*/
+
+
+//why we use middleware and request handlers 
+// hanle authorize middleware for get,post,put,patch,delete 
+//Middleware brodly uses app.use()
+
+
+/*
+const {AuthMiddleware,userAuth} = require("./middlewares/auth");
+app.use("/admin",AuthMiddleware);
 
 
 
 
-
-
-
-
-
-
-
-app.use("/",(req,res)=>{
-    res.send("Route handlers");
+app.get("/admin/getData",(req,res,next)=>{
+    //logic of checking if req is authorized or not
+    console.log("Admin route started running");
+    res.send("Admin route handler");
+   
 })
+app.get("/admin/deleteUser",(req,res,next)=>{
+    //logic of checking if req is authorized or not
+    console.log("AdminDelete route started running");
+    res.send("Deleting the user");
+   
+})
+
+app.use("/users",userAuth,(req,res,next)=>{
+    console.log("users route started running");
+    res.send("users route handler");
+})
+//main authetication nahi chahta login karte samay to middleware ka use nahi karege isme
+app.use("/users/login",(req,res,next)=>{
+    console.log("Login route started running");
+    res.send("Login route handler");
+})
+
+*/
+
+//Error handling middleware
+
+/*
+try{
+    throw new Error("annat");
+    res.send("user data send")
+}
+catch(err){
+    res.status(500).send("Something went wrong from support --team");
+}2
+
+
+app.use("/",(err,req,res,next)=>{
+    console.log("Error handling middleware started running");
+    if(err){
+        res.status(500).send("Something went wrong");
+    }
+    //this method is always at the end 
+
+})
+
+*/
 app.listen(3000);
