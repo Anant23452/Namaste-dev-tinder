@@ -20,3 +20,11 @@
 -why we use middle ware ?
 -write a dummy authentication for admin
 - write a dummy authentication for user route,except /user/login
+-create a free cluster on mongodb atlas
+-install mongoose library
+-connect to applicaton to you database/devtinder<connection -url>
+-call the connectDb function and connect to database before the server connecton
+-creating a user schema and user model
+-creating a POST /signup api to add data to database 
+-push some documents using API call from postman
+

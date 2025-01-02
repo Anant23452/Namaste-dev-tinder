@@ -1,7 +1,56 @@
 console.log("Dev tider is running");
-require("./config/database")
 const express= require("express");
 const app = express();
+ const connectDb =require("./config/database")
+ const User = require("./models/user")
+
+ app.post("/signup", async (req,res,)=>{
+     const user = new User({
+         firstName:"Ankita",
+         lastName:"Singh",
+         email:"ankita@gmail.com",
+         password:"123656"
+     })
+     
+     try{
+        await user.save();
+     res.send("User registered successfully");
+     }
+     catch(error){
+        res.status(404).send("erro saving the user in database");
+     }
+
+
+
+
+ })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+connectDb()
+.then(()=>{
+    console.log("Connected to MongoDB");
+    app.listen(3000,()=>{
+        console.log("Server is running on port 3000");
+     
+    });
+})
+.catch((err)=>{
+    console.error("Error connecting to MongoDB: ");
+});
 
 // this will use all api call form this route it include all http methods 
 // app.delete("/delete",(req,res)=>{
@@ -120,4 +169,7 @@ app.use("/",(err,req,res,next)=>{
 })
 
 */
-app.listen(3000);
+
+app.use("/",(req,res,next)=>{
+    res.send("User data send");
+})
