@@ -1,12 +1,12 @@
 console.log("Dev tider is running");
 const express= require("express");
 const app = express();
- const connectDb =require("./config/database")
- const User = require("./models/user")
+ const connectDb =require("./src/config/database")
+ const User = require("./src/models/user")
  app.use(express.json());
 
  app.post("/signup", async (req,res,)=>{
-    console.log(req)
+    console.log(req.body)
     // add data to database 
      const user = new User(req.body )
      
