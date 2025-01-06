@@ -33,5 +33,6 @@
 -api -get user from database 
 -api  feed api get all the user from database at ui of anyone feed
 -api  get user by its id
-
-
+-api get delete api and delete user 
+-get update api with using patch api upadte user
+-diffrent b/w patch and put api updata

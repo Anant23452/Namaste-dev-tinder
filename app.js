@@ -64,6 +64,21 @@ const app = express();
  })
 
 
+ //getting update api and update user information from all user information on a feel of ui
+
+ app.patch("/user",async(req,res)=>{
+    const userId=req.body.userId;
+    const data = req.body;
+    try{
+        await User.findByIdAndUpdate({_id:userId},data);
+        res.send("User updated successfully");
+    }
+    catch(err){
+        res.status(404).send("something went wrong");
+    } 
+ })
+
+
 
 
 
