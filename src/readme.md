@@ -30,4 +30,8 @@
 -diffrent b/w js object and json
 -add express.json middleware to  your app
 -make your sign api dynamic to recieve data from end users
+-api -get user from database 
+-api  feed api get all the user from database at ui of anyone feed
+-api  get user by its id
+
 

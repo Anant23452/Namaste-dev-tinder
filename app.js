@@ -6,7 +6,7 @@ const app = express();
  app.use(express.json());
 
  app.post("/signup", async (req,res,)=>{
-    console.log(req.body)
+    // console.log(req.body)
     // add data to database 
      const user = new User(req.body )
      
@@ -21,6 +21,46 @@ const app = express();
 
 
 
+ })
+
+ //find user by its's email address by getting the email address
+ app.get("/user",async(req,res)=>{
+    const Useremail= req.body.email;
+    try{
+        const user = await User.find({email:Useremail});
+        if(user.length==0){
+            res.status(404).send("User not found");
+        }else  res.send(user);
+        
+    }
+    catch(err){
+        res.status(404).send("something went wrong");
+    }
+ })
+ //getting feed api from all user information on a feel of ui
+ app.get("/feed",async(req,res)=>{
+    try{
+        const user= await User.find({});
+        res.send(user);
+        // console.log(user);
+    }
+    catch(err){
+        res.status(404).send("something went wrong");
+    }
+ })
+
+
+ //getting delete api and delete user from all user information on a feel of ui
+ app.delete("/user",async(req,res)=>{
+    const UserId=req.body.userId;
+    try{
+      await User.findByIdAndDelete(UserId);
+        // res.send(user);
+         res.send("User deleted successfully");
+    }
+    catch(err){
+        res.status(404).send("something went wrong");
+    }
  })
 
 
