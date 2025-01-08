@@ -36,3 +36,5 @@
 -api get delete api and delete user 
 -get update api with using patch api upadte user
 -diffrent b/w patch and put api updata
+-what are the ooptioons  in Modle.findOneUpdate function explore more about it
+-api update the user with email id
