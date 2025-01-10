@@ -69,7 +69,7 @@ const app = express();
  app.patch("/user",async(req,res)=>{
     const userId=req.body.userId;
     const data = req.body;
-    console.log(data);
+    // console.log(data);
     console.log(userId);
 
     try{

@@ -38,3 +38,7 @@
 -diffrent b/w patch and put api updata
 -what are the ooptioons  in Modle.findOneUpdate function explore more about it
 -api update the user with email id
+-explore schema options in documentation
+-add default
+-improve schema options in 
+-put appropriate schema and update timestamps in schema
