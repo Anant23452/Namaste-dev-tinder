@@ -66,8 +66,8 @@ const app = express();
 
  //getting update api and update user information from all user information on a feel of ui
 
- app.patch("/user",async(req,res)=>{
-    const userId=req.body.userId;
+ app.patch("/user/userId",async(req,res)=>{
+    const userId=req.body.params?.userId;
     const data = req.body;
     // console.log(data);
     // console.log(userId);
@@ -85,6 +85,9 @@ const app = express();
             })
             if(!isUpdateAllowed){
                throw new Error(" :Invalid updates");
+            }
+            if(data?.skills.length>=10){
+                throw new Error("Skills must be at most be 10 characters")
             }
 
         await User.findByIdAndUpdate({_id:userId},data);

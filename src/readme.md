@@ -42,3 +42,4 @@
 -add default
 -improve schema options in 
 -put appropriate schema and update timestamps in schema
+-Data sanitization -add api validation for each field
