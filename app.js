@@ -70,15 +70,29 @@ const app = express();
     const userId=req.body.userId;
     const data = req.body;
     // console.log(data);
-    console.log(userId);
+    // console.log(userId);
 
     try{
+        const ALLOWED_UPDATES =[
+            "firstName",
+            "lastName",
+            "photoURL",
+            "geneder",
+            "skills",
+            "age"];
+            const isUpdateAllowed =Object.keys(data).every((k)=>{
+               ALLOWED_UPDATES.includes(k);
+            })
+            if(!isUpdateAllowed){
+               throw new Error(" :Invalid updates");
+            }
+
         await User.findByIdAndUpdate({_id:userId},data);
       
         res.send("User updated successfully");
     }
     catch(err){
-        res.status(404).send("something went wrong");
+        res.status(404).send("UPdate failed" +err.message);
     } 
  })
 
