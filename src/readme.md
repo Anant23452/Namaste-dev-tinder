@@ -43,3 +43,5 @@
 -improve schema options in 
 -put appropriate schema and update timestamps in schema
 -Data sanitization -add api validation for each field
+-Install validator from npm 
+-Add validator to all schema through reading with npm library
