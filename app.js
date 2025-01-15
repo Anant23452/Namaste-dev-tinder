@@ -3,14 +3,25 @@ const express= require("express");
 const app = express();
  const connectDb =require("./src/config/database")
  const User = require("./src/models/user")
+ const {validateSignUpdate}=require("./src/utils/validation")
  app.use(express.json());
 
  app.post("/signup", async (req,res,)=>{
     // console.log(req.body)
     // add data to database 
-     const user = new User(req.body )
-     
-     try{
+    
+    try{
+        //validation of data 
+        validateSignUpdate(req);
+        const {password} = req.body;
+        console.log(password);
+        
+        
+
+        //encryption of password
+        
+        //Creating a instance of user model
+        const user = new User(req.body )
         await user.save();
      res.send("User registered successfully");
      }
