@@ -2,9 +2,11 @@ console.log("Dev tider is running");
 const express= require("express");
 const app = express();
  const connectDb =require("./src/config/database")
+ 
  const User = require("./src/models/user")
  const {validateSignUpdate}=require("./src/utils/validation")
  app.use(express.json());
+ const bcrypt = require("bcrypt");
 
  app.post("/signup", async (req,res,)=>{
     // console.log(req.body)
@@ -12,13 +14,20 @@ const app = express();
     
     try{
         //validation of data 
-        validateSignUpdate(req);
+        // validateSignUpdate(req);
+
+
+
+        //checking if user already exist or not
         const {password} = req.body;
         console.log(password);
         
         
 
         //encryption of password
+
+        const passwordHash = await bcrypt.hash(password,10)
+        console.log(passwordHash);
         
         //Creating a instance of user model
         const user = new User(req.body )

@@ -24,7 +24,12 @@ const userSchema = new Schema({
     },
     gender: {
         type: String
-    }
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    
 });
 
 //creating user model
