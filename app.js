@@ -19,7 +19,7 @@ const app = express();
 
 
         //checking if user already exist or not
-        const {password} = req.body;
+        const {firstName,lastName,age,email,password} = req.body;
         console.log(password);
         
         
@@ -30,7 +30,13 @@ const app = express();
         console.log(passwordHash);
         
         //Creating a instance of user model
-        const user = new User(req.body )
+        const user = new User({
+            firstName,
+            lastName,
+            email,
+            age,
+            password:passwordHash
+        } )
         await user.save();
      res.send("User registered successfully");
      }
