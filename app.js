@@ -1,9 +1,10 @@
 console.log("Dev tider is running");
 const express= require("express");
 const app = express();
- const connectDb =require("./src/config/database")
+ const connectDb =require("./src/config/database");
+ const {adminAuth,userAuth} = require("./src/middlewares/auth");
  
- const User = require("./src/models/user")
+ const User = require("./src/models/user");
  const {validateSignUpdate}=require("./src/utils/validation")
  app.use(express.json());
  const bcrypt = require("bcrypt");
