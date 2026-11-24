@@ -10,18 +10,33 @@ authRouter.post("/signup", async (req, res) => {
     // Validation of data
     validateSignUpData(req);  
 
-    const { firstName, lastName, emailId, password } = req.body;
+    const {
+      firstName,
+      lastName,
+      emailId,
+      password,
+      age,
+      gender,
+      photoUrl,
+      about,
+      skills,
+    } = req.body;
 
     // Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
     console.log(passwordHash);
 
-    //   Creating a new instance of the User model
+    // Creating a new instance of the User model
     const user = new User({
       firstName,
       lastName,
       emailId,
       password: passwordHash,
+      age,
+      gender,
+      photoUrl,
+      about,
+      skills,
     });
 
     const savedUser = await user.save();
@@ -40,12 +55,16 @@ authRouter.post("/signup", async (req, res) => {
 authRouter.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
+    console.log("👉 Login request received for email:", emailId);
 
     const user = await User.findOne({ emailId: emailId });
     if (!user) {
+      console.log("❌ User not found in database for email:", emailId);
       throw new Error("Invalid credentials");
     }
+
     const isPasswordValid = await user.validatePassword(password);
+    console.log("🔑 Password match status:", isPasswordValid);
 
     if (isPasswordValid) {
       const token = await user.getJWT();
@@ -55,6 +74,7 @@ authRouter.post("/login", async (req, res) => {
       });
       res.send(user);
     } else {
+      console.log("❌ Password did not match the stored hash");
       throw new Error("Invalid credentials");
     }
   } catch (err) {
